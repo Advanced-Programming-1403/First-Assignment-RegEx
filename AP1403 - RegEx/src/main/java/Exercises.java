@@ -11,10 +11,9 @@ public class Exercises {
 
     public boolean validateEmail(String email) {
         if (email == null || email.isEmpty()) {
-            return false; // Ensure email is not null or empty
+            return false;
         }
 
-        // Improved regex to prevent dot at the end of local part and hyphen at the start of domain
         String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9]+(-[A-Za-z0-9]+)*\\.[A-Za-z]{2,}$";
 
 
@@ -30,21 +29,20 @@ public class Exercises {
      */
     public String findDate(String input) {
         if (input == null || input.isEmpty()) {
-            return null; // Return null for empty input
+            return null;
         }
 
-        // Regex pattern to match both British (DD/MM/YYYY) and American (MM/DD/YYYY) formats
-        String regex = "\\b(0?[1-9]|[12][0-9]|3[01])([/.-])(0?[1-9]|1[0-2])\\2(\\d{4})\\b" // British: DD/MM/YYYY
-                + "|\\b(0?[1-9]|1[0-2])([/.-])([0-2]?[0-9]|3[01])\\6(\\d{4})\\b"; // American: MM/DD/YYYY
+        String regex = "\\b(0?[1-9]|[12][0-9]|3[01])([/.-])(0?[1-9]|1[0-2])\\2(\\d{4})\\b"
+                + "|\\b(0?[1-9]|1[0-2])([/.-])([0-2]?[0-9]|3[01])\\6(\\d{4})\\b";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
-            return matcher.group(); // Return the first matched date
+            return matcher.group();
         }
 
-        return null; // No valid date found
+        return null;
     }
 
     /*
@@ -58,16 +56,13 @@ public class Exercises {
         - has no white-space in it
      */
     public int findValidPasswords(String string) {
-        // Special characters to check for
         String specialChars = "!@#$%^&*";
         int count = 0;
 
-        // Loop through substrings of the string with length >= 8
         for (int i = 0; i <= string.length() - 8; i++) {
             for (int j = i + 8; j <= string.length(); j++) {
                 String substring = string.substring(i, j);
 
-                // Check if the substring is a valid password
                 if (isValidPassword(substring, specialChars)) {
                     count++;
                 }
@@ -77,15 +72,13 @@ public class Exercises {
         return count;
     }
 
-    // Helper method to check if a given password substring is valid
     private boolean isValidPassword(String password, String specialChars) {
         if (password.contains(" ")) {
-            return false;  // contains whitespace, so invalid
+            return false;
         }
 
         boolean hasUpper = false, hasLower = false, hasDigit = false, hasSpecialChar = false;
 
-        // Check each character in the password
         for (char c : password.toCharArray()) {
             if (Character.isUpperCase(c)) {
                 hasUpper = true;
@@ -111,34 +104,30 @@ public class Exercises {
     public List<String> findPalindromes(String string) {
         List<String> list = new ArrayList<>();
 
-        // Normalize the string and split it into words (using regex to capture words of at least 3 letters)
         String[] words = string.split("[^a-zA-Z]+");
 
         for (String word : words) {
-            // Check if the word length is at least 3 and it's a palindrome
             if (word.length() >= 3 && isPalindrome(word)) {
-                list.add(word.toLowerCase());  // Store the palindrome in lower case
+                list.add(word.toLowerCase());
             }
         }
 
         return list;
     }
 
-    // Helper method to check if a word is a palindrome (case insensitive)
     private boolean isPalindrome(String word) {
         int left = 0;
         int right = word.length() - 1;
 
-        // Compare characters from both ends
         while (left < right) {
             if (Character.toLowerCase(word.charAt(left)) != Character.toLowerCase(word.charAt(right))) {
-                return false;  // Not a palindrome if characters don't match
+                return false;
             }
             left++;
             right--;
         }
 
-        return true;  // It's a palindrome
+        return true;
     }
     public static void main(String[] args) {
         // you can test your code here
