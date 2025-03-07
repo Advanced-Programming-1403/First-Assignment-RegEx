@@ -1,0 +1,28 @@
+First, we have two Pattern.compile and pattern.matcher methods, there are used for:
+Pattern.compile():
+A Pattern is essentially the representation of the "regex" in a compiled form, which allows for efficient matching.
+This method (Pattern.compile) takes a "regular expression" and compiles it into a "Pattern object", which is required by pattern.matcher.
+
+Pattern.matcher():
+A Matcher is a method that performs the actual matching operation based on the pattern which we explained earlier. Once we have a Pattern object, we can apply that pattern to a given string using the Matcher object.
+We can then use various methods on the "Matcher object" to check if the pattern matches the string, find matches, or extract matched portions.
+--------------------------------------------  The Functions  --------------------------------------------------------
+
+1. Email Validation Function
+This function is designed to validate an email address using a regular expression (RegEx).
+It checks the format of the email, ensuring it follows the standard format (username@domain.com).
+Btw, Using the RegEx rules, i guess everything for the "String regex" in line 10 is clear:)))
+----------------------------------------------
+2. Date Extraction Function
+This function is designed to extract dates from a string, supporting both British (dd/mm/yyyy) and American (mm/dd/yyyy) formats,
+and also the ISO format (yyyy-mm-dd).
+----------------------------------------------
+3. Password Validation Function
+This function checks whether a given password meets the following conditions:
+- At least 8 characters long
+- Includes at least one uppercase letter, one lowercase letter, one number, and one special character (!@#$%^&*)
+- Does not contain any whitespace.
+----------------------------------------------
+4. Palindrome Detection Function
+The goal of this function is to detect palindromic words (at least 3 letters long) from a given string.
+The function operates in a case-insensitive manner and returns a list of palindromes found in the string.
